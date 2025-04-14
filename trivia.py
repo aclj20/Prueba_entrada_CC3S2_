@@ -47,14 +47,15 @@ def run_quiz():
     quiz.add_question(Question("¿Animal más rápido del mundo?", ["Guepardo", "Águila", "León", "Tiburón"], "Guepardo"))
     quiz.add_question(Question("¿Fundador del Imperio Inca?", ["Atahualpa", "Pachacútec", "Manco Cápac", "Huáscar"], "Manco Cápac"))
 
-    total_questions = len(question)
+    correct_answers = 0
+    total_questions = len(quiz.questions)
 
     #Recorremos todas las preguntas
     for _ in range(total_questions):
         question = quiz.get_next_question()
         #Si no hay más preguntas, salimos del bucle
         if question is None:
-            print("¡Fin!")
+            print("¡Fin del quiz!")
             break
         
         #Si hay más preguntamos, mostramos la descripción
@@ -63,15 +64,39 @@ def run_quiz():
         for idx, option in enumerate(question.options):
             print(f"{idx + 1}. {option}")
 
-        answer = input("Tu respuesta: ")
 
         #Guardamos la opción elegida
-        selected_option = question.options[int(answer) - 1]
+        while True:
+            answer = input("Tu respuesta: ").strip()
+
+            if not answer.isdigit():
+                print("Entrada inválida. Debes ingresar un número.")
+                continue
+
+            selected_index = int(answer) - 1
+
+            if selected_index < 0 or selected_index >= len(question.options):
+                print("Opción fuera de rango. Intenta otra vez.")
+                continue
+
+            # Entrada válida
+            selected_option = question.options[selected_index]
+            break
 
         #Verficamos si la respuesta es correcta o no
         if question.is_correct(selected_option):
+            print("¡Correcto!")
             correct_answers += 1
+            
         else:
             print(f"Incorrecto. La respuesta correcta es: {question.correct_answer}")
+    
+    incorrect_answers = total_questions - correct_answers
 
+    print("\n Resultados del Quiz")
+    print(f" Respuestas correctas: {correct_answers}")
+    print(f" Respuestas incorrectas: {incorrect_answers}")
     print(f"\nTu puntaje final es {correct_answers}/{total_questions}.")
+
+
+run_quiz()
