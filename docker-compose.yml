@@ -4,21 +4,22 @@ services:
   web:
       build: .
       ports:
-      - "8000:80"
+      - "8000:8000"
       
       volumes:
-      - .:/app
+      - ./app:/app
 
       depends_on:
-      - db
+      - db 
   
   db:
     image: postgres:15
+    restart: always
     container_name: postgres_db
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: arianaLopez
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      POSTGRES_DB: preguntasdb
     ports:
       - "5432:5432"
     volumes:
