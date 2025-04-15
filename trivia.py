@@ -117,5 +117,7 @@ def run_quiz():
     print(f"Puntaje final: {quiz.correct_answers}/{total_questions}")
 
 
-run_quiz()
+if __name__ == "__main__":
+    run_quiz()
+
 
