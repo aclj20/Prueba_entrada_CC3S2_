@@ -13,10 +13,14 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      - run: pip install -r requirements.txt
-      - run: pytest
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v1
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+        
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
