@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
-import json  # ← necesario para decodificar opciones
+import json  
 
 load_dotenv()
 
@@ -22,7 +22,6 @@ def get_db():
     finally:
         db.close()
         
-# Modelo para recibir respuestas del jugador
 class AnswerSubmission(BaseModel):
     player: str
     question_id: int

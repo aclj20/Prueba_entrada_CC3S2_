@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS questions (
     nivel VARCHAR(20) NOT NULL
 );
 
--- Nivel fácil
 INSERT INTO questions (description, options, correct_answer, nivel) VALUES
 ('¿Qué es una IP?', '["Internet Protocol", "Input Path", "Internal Port", "Internet Package"]', 'Internet Protocol', 'facil'),
 ('¿Qué hace un switch?', '["Conecta dispositivos", "Filtra virus", "Enruta paquetes", "Otorga IPs"]', 'Conecta dispositivos', 'facil'),
@@ -19,7 +18,6 @@ INSERT INTO questions (description, options, correct_answer, nivel) VALUES
 ('¿Qué protocolo cifra HTTPS?', '["TLS", "TCP", "UDP", "IP"]', 'TLS', 'facil'),
 ('¿Qué hace un hub?', '["Reenvía datos a todos los puertos", "Filtra paquetes", "Conecta redes", "Gestiona tráfico"]', 'Reenvía datos a todos los puertos', 'facil');
 
--- Nivel intermedio
 INSERT INTO questions (description, options, correct_answer, nivel) VALUES
 ('¿Qué es un firewall?', '["Antivirus", "Sistema de defensa", "Router", "Exploit"]', 'Sistema de defensa', 'intermedio'),
 ('¿Qué es un ransomware?', '["Malware que cifra archivos", "Firewall", "Phishing", "Spyware"]', 'Malware que cifra archivos', 'intermedio'),
@@ -32,7 +30,6 @@ INSERT INTO questions (description, options, correct_answer, nivel) VALUES
 ('¿Qué puerto usa SSH?', '["22", "80", "443", "53"]', '22', 'intermedio'),
 ('¿Qué protocolo usa HTTPS?', '["TLS", "SMTP", "FTP", "UDP"]', 'TLS', 'intermedio');
 
--- Nivel difícil
 INSERT INTO questions (description, options, correct_answer, nivel) VALUES
 ('¿Qué es un qubit?', '["Unidad cuántica", "Unidad clásica", "Algoritmo", "Sistema óptico"]', 'Unidad cuántica', 'dificil'),
 ('¿Qué permite la superposición cuántica?', '["Estar en múltiples estados", "Duplicar datos", "Codificar bits", "Reducir errores"]', 'Estar en múltiples estados', 'dificil'),

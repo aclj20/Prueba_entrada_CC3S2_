@@ -9,11 +9,10 @@ class Question(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(Text, nullable=False)
-    options = Column(Text, nullable=False)  # 👈 cambia ARRAY(Text) por Text
+    options = Column(Text, nullable=False) 
     correct_answer = Column(Text, nullable=False)
     nivel = Column(String, nullable=False)
 
-    # Serializar lista como JSON string
     def __init__(self, **kwargs):
         if isinstance(kwargs.get("options"), list):
             kwargs["options"] = json.dumps(kwargs["options"])

@@ -1,7 +1,7 @@
 import requests
 
 import os
-API_URL = os.getenv("API_URL", "http://api:8000")  # Asegúrate que main.py esté corriendo
+API_URL = os.getenv("API_URL", "http://api:8000") 
 
 class Question:
     def __init__(self, id, description, options):
