@@ -36,7 +36,7 @@ def get_questions_by_level(nivel: str, db: Session = Depends(get_db)):
         {
             "id": q.id,
             "description": q.description,
-            "options": json.loads(q.options)  # ← aquí se decodifica el string JSON
+            "options": json.loads(q.options)  
         } for q in results
     ]
 
