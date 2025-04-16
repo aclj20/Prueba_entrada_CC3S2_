@@ -1,10 +1,11 @@
-version: '3.7'
+version: '3.7' # Versión del esquema de Docker Compose
 
 services:
+  # Servicio del juego principal en consola
   juego:
       build: .
       volumes:
-        - .:/app
+        - .:/app 
       stdin_open: true
       tty: true
       depends_on:
@@ -12,15 +13,16 @@ services:
         - api 
 
       environment:
-        - DATABASE_URL=${DATABASE_URL}
+        - DATABASE_URL=${DATABASE_URL}  # Variables definidas en .env
         - SECRET_KEY=${SECRET_KEY}
 
       env_file:
         - .env
-      command: python trivia.py
+      command: python trivia.py # Comando que corre el juego
       networks:
         - trivia-net
     
+  # Servicio de la API construida con FastAPI
   api:
     build: .
     ports:
@@ -30,8 +32,9 @@ services:
     networks:
         - trivia-net
   
+  # Servicio de base de datos con PostgreSQL
   db:
-    image: postgres:15
+    image: postgres:15 # Imagen oficial de PostgreSQL versión 15
     restart: always
     container_name: postgres_db
     environment:
@@ -42,6 +45,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Script SQL que se ejecuta al crear el contenedor
     networks:
         - trivia-net
 
